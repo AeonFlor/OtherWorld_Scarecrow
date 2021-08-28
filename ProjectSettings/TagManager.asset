@@ -6,13 +6,14 @@ TagManager:
   tags:
   - scarecrow
   - crop
-  - enermy
   - slot
+  - enemy
+  - Ending
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - OverUI
   - Water
   - UI
   - 
@@ -21,7 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - Enermy
+  - Enemy
   - Background_Image
   - 
   - 
@@ -57,6 +58,9 @@ TagManager:
   - name: player_object
     uniqueID: 1099204717
     locked: 0
-  - name: Enermy
+  - name: Enemy
     uniqueID: 3776790375
+    locked: 0
+  - name: card
+    uniqueID: 3121190095
     locked: 0

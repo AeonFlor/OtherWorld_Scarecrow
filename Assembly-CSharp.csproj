@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,16 +53,30 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\ButtonManager.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\scarecrow.cs" />
     <Compile Include="Assets\Scripts\BirdSpawner.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Scripts\Crop.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\Scripts\Bird.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
+    <Compile Include="Assets\Scripts\CardManager.cs" />
+    <Compile Include="Assets\DOTween_1_2_632\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\Scripts\Scene.cs" />
+    <Compile Include="Assets\Scripts\Util.cs" />
     <Compile Include="Assets\Scripts\Slot.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\DOTween_1_2_632\DOTween\DOTween.XML" />
+    <None Include="Assets\DOTween_1_2_632\DOTween\DOTween.dll" />
+    <None Include="Assets\DOTween_1_2_632\DOTween\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -286,6 +300,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\DOTween_1_2_632\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>

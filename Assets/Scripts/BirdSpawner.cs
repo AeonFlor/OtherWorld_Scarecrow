@@ -29,16 +29,15 @@ public class BirdSpawner : MonoBehaviour
 
         StartCoroutine(birdSpawn());
     }
+
     public void insertQueue(GameObject target)
     {
         bird_queue.Enqueue(target);
-        target.SetActive(false);
     }
 
     public GameObject getQueue()
     {
         GameObject target = bird_queue.Dequeue();
-        target.SetActive(true);
 
         return target;
     }
@@ -59,8 +58,20 @@ public class BirdSpawner : MonoBehaviour
                 if (xindex == 0)
                     target.transform.localScale = new Vector3(-4, 3, 1);
 
+                else if(xindex == 1)
+                    target.transform.localScale = new Vector3(4, 3, 1);
+
                 target.transform.position = new Vector2(xpos[xindex], ypos);
                 target.transform.rotation = new Quaternion(0, 0, 0, 0);
+
+                // getQueue 내부에서 setActive(true) 하니 게임 중간중간 position 이 바뀌지도 않았는데 살짝 보이는 경우가 있어 수정함.
+                target.SetActive(true);
+
+                //crop 방향
+                Rigidbody2D target_body = target.GetComponent<Rigidbody2D>();
+                Vector2 direction = new Vector3(0, 0.5f, 0) - target.transform.position;
+                direction = direction.normalized;
+                target.GetComponent<Rigidbody2D>().velocity = direction * target.GetComponent<Bird>().birdSpeed;
             }
 
             yield return new WaitForSeconds(spawnRate);

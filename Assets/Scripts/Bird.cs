@@ -2,50 +2,91 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class Bird : MonoBehaviour
 {
-    public ulong birdHP = 1000;
-    public ulong birdATK = 100;
-    public float birdSpeed = 2f;
-    public float xpos, ypos;
+    RectTransform hpBar;
+    public GameObject printHP;
+    GameObject canvas;
+    Image cur_hpBar;
 
-    private Rigidbody2D birdRigidbody;
+    public long birdMaxHP = 1000, birdCurHP = 1000;
+    public long birdATK = 100;
+    public float birdSpeed = 2f, birdATKspeed = 2f;
+    public float xpos, ypos;
+    public float time_AfterATK;
+
     private Animator animator;
     private AudioSource audio;
 
-    public Vector2 direction;
+    Crop cropController;
 
     void Start()
     {
-        birdRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
 
-        // crop 방향
-        direction = new Vector3(0, 0.5f, 0) - birdRigidbody.transform.position;
-        direction = direction.normalized;
-        birdRigidbody.velocity = direction * birdSpeed;
+        canvas = GameObject.Find("Canvas");
+
+        hpBar = Instantiate(printHP, canvas.transform).GetComponent<RectTransform>();
+        cur_hpBar = hpBar.transform.GetChild(0).GetComponent<Image>();
+
+        audio = this.gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        
+        Vector3 hpBar_pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y - 0.8f, 0));
+        hpBar.position = hpBar_pos;
+        cur_hpBar.fillAmount = (float)birdCurHP / (float)birdMaxHP;
+
+        time_AfterATK += Time.deltaTime;
+
+        if (!Object.ReferenceEquals(cropController, null) && time_AfterATK >= birdATKspeed)
+        {
+            this.audio.Play();
+            cropController.attacked(birdATK);
+            time_AfterATK = 0f;
+        }
     }
 
-    public void attacked()
+    public void attacked(long damage)
     {
         /*
          * 체력 감소 -> 체력이 0 이하라면 die() 함수 실행 후 종료, 아니라면 피격 애니메이션 재생
          */
+        birdCurHP -= damage;
+
+        if (birdCurHP < 1)
+        {
+            die();
+        }
+
+        else
+        {
+            //피격 애니메이션 재생
+        }
     }
 
     public void die()
     {
+        hpBar.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        birdHP = 1000;
-        // 깃털 일정량 증가 코드
+
+        GameManager.instance.feather += GameManager.instance.bird_drop;
+
         // 죽음 애니메이션 제작 후 실행
         BirdSpawner.instance.insertQueue(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        if (hpBar != null)
+        {
+            hpBar.gameObject.SetActive(true);
+            birdCurHP = birdMaxHP;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -62,15 +103,14 @@ public class Bird : MonoBehaviour
 
         else if (other.tag == "crop")
         {
-            Crop cropController = other.GetComponent<Crop>();
+            cropController = other.GetComponent<Crop>();
 
             if (cropController != null)
             {
                 cropController.attacked(birdATK);
-
             }
 
-            birdRigidbody.velocity = Vector2.zero;
+            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 }

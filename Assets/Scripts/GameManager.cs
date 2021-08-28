@@ -11,9 +11,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject resourceText;
     public Text lumber_text, feather_text;
-    public int lumber, feather, scarecrow_cost;
-    
-    private bool isGameover;
+    public int lumber, feather, scarecrow_cost, bird_drop, reroll_cost;
+    public AudioSource audio;
 
     private void Awake()
     {
@@ -21,29 +20,39 @@ public class GameManager : MonoBehaviour
         {
             GameManager.instance = this;
         }
+
+        else
+        {
+            Destroy(this);
+        }
     }
 
     void Start()
     {
-        isGameover = false;
-        lumber = feather = 0;
-        scarecrow_cost = 0;
+        Screen.SetResolution(1200, 600, true);
+
+        lumber = feather = 100;
+        scarecrow_cost = 5;
+        bird_drop = 5;
+        reroll_cost = 5;
+
+        audio = this.GetComponent<AudioSource>();
+        audio.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isGameover)
-        {
-            lumber_text.text = lumber + "";
-            feather_text.text = feather + "";
-
-
-        }
+        lumber_text.text = "∏Ò¿Á : " + lumber;
+        feather_text.text = "±Í≈– : " + feather;
     }
 
-    public void EndGame()
+    public void EndGame(bool isGood)
     {
+        if(isGood)
+            SceneManager.LoadScene("goodEnding");
 
+        else
+            SceneManager.LoadScene("badEnding");
     }
 }
