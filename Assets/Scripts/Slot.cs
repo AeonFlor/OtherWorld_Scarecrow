@@ -53,6 +53,7 @@ public class Slot : MonoBehaviour
         obj = target;
         setInvisible();
         target.slot = this;
+        level_text_ins.text = "<LV : " + obj.keeperLV + ">";
         obj.transform.position = this.transform.position - new Vector3(0f, -0.4f, 0f);
     }
 

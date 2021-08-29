@@ -1538,7 +1538,7 @@ MonoBehaviour:
   cropCurHP: 10000
   cropMaxHP: 10000
   proceedCur: 0
-  proceedMax: 1000
+  proceedMax: 300
   printHP: {fileID: 3785622823617099316, guid: 0ba46acf967eb424f97e728991a2100a, type: 3}
   printProceed: {fileID: 8318597577779867043, guid: bac1aed9043371f4bb9c79ed43fc6415, type: 3}
 --- !u!1 &1056588973

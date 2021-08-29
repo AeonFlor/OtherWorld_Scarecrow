@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Crop : MonoBehaviour
 {
-    public long cropCurHP = 10000, cropMaxHP = 10000, proceedCur = 0, proceedMax = 1000;
+    public long cropCurHP = 10000, cropMaxHP = 10000, proceedCur = 0, proceedMax = 300;
 
     RectTransform hpBar;
     RectTransform proceedBar;
@@ -36,7 +36,7 @@ public class Crop : MonoBehaviour
 
         Vector3 hpBar_pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y - 0.8f, 0));
         hpBar.position = hpBar_pos;
-        cur_hpBar.fillAmount = (float)cropCurHP / (float)cropMaxHP;
+        cur_hpBar.fillAmount = (float)cropCurHP / cropMaxHP;
 
         Vector3 proceedBar_pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y - 1.2f, 0));
         proceedBar.position = proceedBar_pos;

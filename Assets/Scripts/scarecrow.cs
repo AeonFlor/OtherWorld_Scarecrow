@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class scarecrow : MonoBehaviour
 {
-    public long keeperHP, keeperATK, defense, dodge, sight, keeperLV;
+    public long keeperHP, keeperATK, defense, dodge, keeperLV;
     public float atkRange, KeeperATKspeed;
 
     public Slot slot;

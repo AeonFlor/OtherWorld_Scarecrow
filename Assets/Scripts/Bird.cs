@@ -14,7 +14,6 @@ public class Bird : MonoBehaviour
     public long birdMaxHP = 1000, birdCurHP = 1000;
     public long birdATK = 100;
     public float birdSpeed = 2f, birdATKspeed = 2f;
-    public float xpos, ypos;
     public float time_AfterATK;
 
     private Animator animator;
@@ -39,7 +38,7 @@ public class Bird : MonoBehaviour
     {
         Vector3 hpBar_pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y - 0.8f, 0));
         hpBar.position = hpBar_pos;
-        cur_hpBar.fillAmount = (float)birdCurHP / (float)birdMaxHP;
+        cur_hpBar.fillAmount = (float)birdCurHP / birdMaxHP;
 
         time_AfterATK += Time.deltaTime;
 
