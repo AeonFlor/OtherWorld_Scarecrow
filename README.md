@@ -3,6 +3,8 @@
 
 [![OtherWorld_Scarecrow](https://img.youtube.com/vi/IBU90Uyh8lY/0.jpg)](https://youtu.be/IBU90Uyh8lY) 
 
+유튜브 링크 : https://www.youtube.com/watch?v=IBU90Uyh8lY&t=2s
+
 프로젝트 기간 : 21.08.22 ~ 21.08.28
 
 21.07.22 ~ 21.07.25, 한양대학교, ERICA 의 게임 제작 동아리인 오버테일에서 주최한 하계 게임잼에 출품했던 작품의 리메이크 버전입니다.
@@ -19,5 +21,5 @@
 
 리소스 링크는 다음과 같습니다.
 
-sunnyland : https://assetstore.unity.com/packages...
-오디오 (편의 상 링크를 적어놓은 텍스트를 첨부했습니다.) : https://github.com/AeonFlor/OtherWorl...
+sunnyland : https://assetstore.unity.com/packages/2d/characters/sunny-land-103349?locale=ko-KR
+오디오 (편의 상 링크를 적어놓은 텍스트를 첨부했습니다.) : https://github.com/AeonFlor/OtherWorld_Scarecrow/blob/main/Assets/Audio/Sound%20Source.txt
